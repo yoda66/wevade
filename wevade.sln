@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wevade_x86", "wevade_x86\we
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wevade_x64", "wevade_x64\wevade_x64.csproj", "{86A6EE7E-6FBB-47FE-ADA1-2FAD068EE4A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "installme_x86", "installme_x86\installme_x86.csproj", "{17C71671-A92D-4D31-B390-2D785E1FD39D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{86A6EE7E-6FBB-47FE-ADA1-2FAD068EE4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A6EE7E-6FBB-47FE-ADA1-2FAD068EE4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A6EE7E-6FBB-47FE-ADA1-2FAD068EE4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C71671-A92D-4D31-B390-2D785E1FD39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C71671-A92D-4D31-B390-2D785E1FD39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C71671-A92D-4D31-B390-2D785E1FD39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C71671-A92D-4D31-B390-2D785E1FD39D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
